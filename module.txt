@@ -1,7 +1,7 @@
 {
     "id" : "ManualLabor",
     "version" : "1.1.1-SNAPSHOT",
-    "author" : "Josharias",
+    "author" : "Josharias, Cervator, MarcinSc, xrtariq2594, msteiger, TheJYKoder",
     "displayName" : "ManualLabor",
     "description" : "A module for adding easiness and complexity to digging and mining in Terasology",
     "dependencies" : [
