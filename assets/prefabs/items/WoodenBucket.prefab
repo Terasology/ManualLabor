@@ -11,8 +11,8 @@
     "maxVolume": 1000,
     "emptyTexture": "ManualLabor:ManualLabor#WoodenBucket",
     "textureWithHole": "ManualLabor:ManualLabor#WoodenBucketFluid",
-    "fluidMinPerc": 10,
-    "fluidSizePerc": 20
+    "fluidMinPerc": [10,0],
+    "fluidSizePerc": [20,0]
   },
   "MaterialFluidItemContainer": {
     "fluidIcon": "ManualLabor:ManualLabor#WoodenBucketFluid"
