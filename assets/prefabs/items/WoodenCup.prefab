@@ -9,6 +9,7 @@
   },
   "FluidContainerItem": {
     "maxVolume": 300,
+    "fillingAmount": 100,
     "emptyTexture": "ManualLabor:ManualLabor#WoodenCup",
     "textureWithHole": "ManualLabor:ManualLabor#WoodenCupFluid",
     "fluidMinPerc": [10,0],
