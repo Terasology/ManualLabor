@@ -9,6 +9,7 @@
   },
   "FluidContainerItem": {
     "maxVolume": 1000,
+    "fillingAmount": 100,
     "emptyTexture": "ManualLabor:ManualLabor#WoodenBucket",
     "textureWithHole": "ManualLabor:ManualLabor#WoodenBucketFluid",
     "fluidMinPerc": [10,0],
