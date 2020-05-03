@@ -10,7 +10,8 @@
         {"id": "Durability", "minVersion": "1.0.0"},
         {"id": "SubstanceMatters", "minVersion": "1.0.0"},
         {"id": "InGameHelp", "minVersion": "1.0.0"},
-        {"id": "CoreBlocks", "minVersion": "1.0.0"}
+        {"id": "CoreBlocks", "minVersion": "1.0.0"},
+        {"id": "Health", "minVersion" : "0.1.0"}
     ],
     "isAugmentation": true
 }
