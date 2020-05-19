@@ -7,12 +7,12 @@
     "dependencies": [
         { "id": "CoreAssets", "minVersion": "2.0.1" },
         { "id": "Drops", "minVersion": "1.0.1" },
-        { "id": "Durability", "minVersion": "1.0.0" },
+        { "id": "Durability", "minVersion": "1.1.0" },
         { "id": "Health", "minVersion": "1.0.0" },
-        { "id": "InGameHelp", "minVersion": "1.0.0" },
-        { "id": "Machines", "minVersion": "1.1.1" },
-        { "id": "SubstanceMatters", "minVersion": "1.0.0" },
-        { "id": "Workstation", "minVersion": "1.0.0" }
+        { "id": "InGameHelp", "minVersion": "1.1.0" },
+        { "id": "Machines", "minVersion": "1.2.0" },
+        { "id": "SubstanceMatters", "minVersion": "1.0.1" },
+        { "id": "Workstation", "minVersion": "1.1.0" }
     ],
     "isAsset": true,
     "isLibrary": true
