@@ -12,7 +12,7 @@
             "Stick", "Plank", "Pegs", "", "", "", "", "",
             "PlantMatter", "WoodenBucket", "WoodenBucketFluid", "WoodenCup", "WoodenCupFluid", "", "", "",
             "", "SmallChunks", "SmallDust", "", "", "", "", "",
-            "Nugget", "Chunks", "Dust", "Sheet", "Plate", "Rod", "Bolt", "Screw", "Waterskin"
+            "Nugget", "Chunks", "Dust", "Sheet", "Plate", "Rod", "Bolt", "Screw"
         ]
     }
 }
