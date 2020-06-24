@@ -1,0 +1,10 @@
+{
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "ManualLabor:ArabicThawb"
+    },
+    "DisplayName": {
+        "name": "Arabic Thawb",
+        "description": "A vest made from cloth which prevents direct exposure to sun and related rise in body temperature."
+    }
+}

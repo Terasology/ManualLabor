@@ -1,0 +1,10 @@
+{
+    "parent": "engine:iconItem",
+    "Item": {
+        "icon": "ManualLabor:WoodenShoe"
+    },
+    "DisplayName": {
+        "name": "Wooden Flat Shoes",
+        "description": "The flat sole on these wooden shoes helps the player walk in the desert without movement speed reduction."
+    }
+}
