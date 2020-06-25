@@ -1,8 +1,8 @@
 {
   "parent": "engine:iconItem",
   "Item": {
-    "icon": "ManualLabor:Waterskin",
-    "stackId": "ManualLabor:Waterskin"
+    "icon": "ManualLabor:ManualLabor#Waterskin",
+    "stackId": "ManualLabor:ManualLabor#Waterskin"
   },
   "DisplayName": {
     "name": "Waterskin"
