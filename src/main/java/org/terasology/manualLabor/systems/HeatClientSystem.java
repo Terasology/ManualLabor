@@ -17,23 +17,15 @@ package org.terasology.manualLabor.systems;
 
 import org.terasology.entityNetwork.systems.EntityNetworkManager;
 import org.terasology.entitySystem.entity.EntityRef;
-import org.terasology.entitySystem.event.EventPriority;
 import org.terasology.entitySystem.event.ReceiveEvent;
 import org.terasology.entitySystem.systems.BaseComponentSystem;
 import org.terasology.entitySystem.systems.RegisterMode;
 import org.terasology.entitySystem.systems.RegisterSystem;
-import org.terasology.input.ButtonState;
-import org.terasology.input.binds.inventory.InventoryButton;
-import org.terasology.logic.players.LocalPlayer;
 import org.terasology.manualLabor.components.HeatBlockNetworkComponent;
 import org.terasology.manualLabor.components.HeatSourceComponent;
-import org.terasology.manualLabor.components.TheHumanMachineComponent;
-import org.terasology.mechanicalPower.components.MechanicalPowerProducerComponent;
-import org.terasology.network.ClientComponent;
+import org.terasology.nui.widgets.TooltipLine;
 import org.terasology.registry.In;
-import org.terasology.rendering.nui.NUIManager;
 import org.terasology.rendering.nui.layers.ingame.inventory.GetItemTooltip;
-import org.terasology.rendering.nui.widgets.TooltipLine;
 
 @RegisterSystem(RegisterMode.CLIENT)
 public class HeatClientSystem extends BaseComponentSystem {

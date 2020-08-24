@@ -22,9 +22,9 @@ import org.terasology.entitySystem.systems.BaseComponentSystem;
 import org.terasology.entitySystem.systems.RegisterMode;
 import org.terasology.entitySystem.systems.RegisterSystem;
 import org.terasology.manualLabor.components.AnalyzedMaterialComponent;
+import org.terasology.nui.widgets.TooltipLine;
 import org.terasology.registry.In;
 import org.terasology.rendering.nui.layers.ingame.inventory.GetItemTooltip;
-import org.terasology.rendering.nui.widgets.TooltipLine;
 import org.terasology.substanceMatters.components.MaterialCompositionComponent;
 
 @RegisterSystem(RegisterMode.CLIENT)

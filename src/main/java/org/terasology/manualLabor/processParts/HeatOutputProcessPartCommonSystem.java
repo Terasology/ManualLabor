@@ -21,7 +21,7 @@ import org.terasology.entitySystem.systems.BaseComponentSystem;
 import org.terasology.entitySystem.systems.RegisterSystem;
 import org.terasology.machines.ui.OverlapLayout;
 import org.terasology.manualLabor.components.HeatSourceComponent;
-import org.terasology.rendering.nui.widgets.UIImage;
+import org.terasology.nui.widgets.UIImage;
 import org.terasology.utilities.Assets;
 import org.terasology.workstation.process.ProcessPartDescription;
 import org.terasology.workstation.processPart.ProcessEntityFinishExecutionEvent;
