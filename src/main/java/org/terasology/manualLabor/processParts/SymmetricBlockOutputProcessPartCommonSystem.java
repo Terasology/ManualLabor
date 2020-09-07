@@ -16,13 +16,13 @@
 package org.terasology.manualLabor.processParts;
 
 import com.google.common.collect.Sets;
-import org.terasology.assets.ResourceUrn;
 import org.terasology.entitySystem.entity.EntityBuilder;
 import org.terasology.entitySystem.entity.EntityManager;
 import org.terasology.entitySystem.entity.EntityRef;
 import org.terasology.entitySystem.event.ReceiveEvent;
 import org.terasology.entitySystem.systems.BaseComponentSystem;
 import org.terasology.entitySystem.systems.RegisterSystem;
+import org.terasology.gestalt.assets.ResourceUrn;
 import org.terasology.logic.inventory.InventoryManager;
 import org.terasology.logic.inventory.InventoryUtils;
 import org.terasology.registry.In;
