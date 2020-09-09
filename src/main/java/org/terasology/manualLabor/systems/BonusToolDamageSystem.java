@@ -2,26 +2,28 @@
 // SPDX-License-Identifier: Apache-2.0
 package org.terasology.manualLabor.systems;
 
-import org.terasology.entitySystem.entity.EntityRef;
-import org.terasology.entitySystem.event.ReceiveEvent;
-import org.terasology.entitySystem.systems.BaseComponentSystem;
-import org.terasology.entitySystem.systems.RegisterMode;
-import org.terasology.entitySystem.systems.RegisterSystem;
-import org.terasology.logic.health.event.BeforeDamagedEvent;
+import org.terasology.engine.entitySystem.entity.EntityRef;
+import org.terasology.engine.entitySystem.event.ReceiveEvent;
+import org.terasology.engine.entitySystem.systems.BaseComponentSystem;
+import org.terasology.engine.entitySystem.systems.RegisterMode;
+import org.terasology.engine.entitySystem.systems.RegisterSystem;
+import org.terasology.engine.world.block.BlockComponent;
+import org.terasology.engine.world.block.entity.damage.BlockDamageModifierComponent;
+import org.terasology.engine.world.block.family.BlockFamily;
+import org.terasology.health.logic.event.BeforeDamagedEvent;
+import org.terasology.inventory.rendering.nui.layers.ingame.GetItemTooltip;
 import org.terasology.manualLabor.components.BonusToolDamageComponent;
 import org.terasology.nui.widgets.TooltipLine;
-import org.terasology.rendering.nui.layers.ingame.inventory.GetItemTooltip;
-import org.terasology.world.block.BlockComponent;
-import org.terasology.world.block.entity.damage.BlockDamageModifierComponent;
-import org.terasology.world.block.family.BlockFamily;
 
 @RegisterSystem(RegisterMode.AUTHORITY)
 public class BonusToolDamageSystem extends BaseComponentSystem {
     @ReceiveEvent(netFilter = RegisterMode.AUTHORITY)
     public void beforeDamage(BeforeDamagedEvent event, EntityRef entity, BlockComponent blockComponent) {
         if (event.getDamageType() != null) {
-            BlockDamageModifierComponent blockDamage = event.getDamageType().getComponent(BlockDamageModifierComponent.class);
-            BonusToolDamageComponent bonusToolDamageComponent = event.getDirectCause().getComponent(BonusToolDamageComponent.class);
+            BlockDamageModifierComponent blockDamage =
+                    event.getDamageType().getComponent(BlockDamageModifierComponent.class);
+            BonusToolDamageComponent bonusToolDamageComponent =
+                    event.getDirectCause().getComponent(BonusToolDamageComponent.class);
             if (blockDamage != null && bonusToolDamageComponent != null) {
                 BlockFamily blockFamily = blockComponent.getBlock().getBlockFamily();
                 for (String category : blockFamily.getCategories()) {
@@ -35,7 +37,8 @@ public class BonusToolDamageSystem extends BaseComponentSystem {
 
 
     @ReceiveEvent
-    public void getDurabilityItemTooltip(GetItemTooltip event, EntityRef entity, BonusToolDamageComponent bonusToolDamageComponent) {
+    public void getDurabilityItemTooltip(GetItemTooltip event, EntityRef entity,
+                                         BonusToolDamageComponent bonusToolDamageComponent) {
         event.getTooltipLines().add(new TooltipLine("Bonus Damage: " + bonusToolDamageComponent.baseDamage));
     }
 }

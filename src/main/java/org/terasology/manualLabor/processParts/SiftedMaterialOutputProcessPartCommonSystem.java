@@ -1,30 +1,18 @@
-/*
- * Copyright 2016 MovingBlocks
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+// Copyright 2020 The Terasology Foundation
+// SPDX-License-Identifier: Apache-2.0
 package org.terasology.manualLabor.processParts;
 
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
-import org.terasology.entitySystem.entity.EntityBuilder;
-import org.terasology.entitySystem.entity.EntityManager;
-import org.terasology.entitySystem.entity.EntityRef;
-import org.terasology.entitySystem.event.ReceiveEvent;
-import org.terasology.entitySystem.systems.BaseComponentSystem;
-import org.terasology.entitySystem.systems.RegisterSystem;
-import org.terasology.logic.inventory.InventoryManager;
-import org.terasology.registry.In;
+import org.terasology.engine.entitySystem.entity.EntityBuilder;
+import org.terasology.engine.entitySystem.entity.EntityManager;
+import org.terasology.engine.entitySystem.entity.EntityRef;
+import org.terasology.engine.entitySystem.event.ReceiveEvent;
+import org.terasology.engine.entitySystem.systems.BaseComponentSystem;
+import org.terasology.engine.entitySystem.systems.RegisterSystem;
+import org.terasology.engine.registry.In;
+import org.terasology.engine.world.block.BlockManager;
+import org.terasology.inventory.logic.InventoryManager;
 import org.terasology.substanceMatters.components.MaterialCompositionComponent;
 import org.terasology.substanceMatters.processParts.TransferSubstancesProcessPartCommonSystem;
 import org.terasology.workstation.process.WorkstationInventoryUtils;
@@ -37,7 +25,6 @@ import org.terasology.workstation.processPart.ProcessEntityIsInvalidToStartEvent
 import org.terasology.workstation.processPart.inventory.ProcessEntityIsInvalidForInventoryItemEvent;
 import org.terasology.workstation.processPart.metadata.ProcessEntityGetOutputDescriptionEvent;
 import org.terasology.workstation.system.WorkstationRegistry;
-import org.terasology.world.block.BlockManager;
 
 import java.util.List;
 import java.util.Map;
@@ -78,7 +65,8 @@ public class SiftedMaterialOutputProcessPartCommonSystem extends BaseComponentSy
     public void validateToExecute(ProcessEntityIsInvalidToStartEvent event, EntityRef processEntity,
                                   SiftedMaterialOutputComponent siftedMaterialOutputComponent) {
         Set<EntityRef> outputItems = createOutputItems(siftedMaterialOutputComponent, processEntity);
-        if (!InventoryProcessPartUtils.canGiveItemsTo(event.getWorkstation(), outputItems, InventoryOutputProcessPartCommonSystem.WORKSTATIONOUTPUTCATEGORY)) {
+        if (!InventoryProcessPartUtils.canGiveItemsTo(event.getWorkstation(), outputItems,
+                InventoryOutputProcessPartCommonSystem.WORKSTATIONOUTPUTCATEGORY)) {
             event.consume();
         }
     }
@@ -90,7 +78,9 @@ public class SiftedMaterialOutputProcessPartCommonSystem extends BaseComponentSy
         // allow other systems to post process these items
         processEntity.addComponent(new InventoryOutputItemsComponent(outputItems));
         for (EntityRef outputItem : outputItems) {
-            if (!inventoryManager.giveItem(event.getInstigator(), event.getInstigator(), outputItem, WorkstationInventoryUtils.getAssignedOutputSlots(event.getWorkstation(), InventoryOutputProcessPartCommonSystem.WORKSTATIONOUTPUTCATEGORY))) {
+            if (!inventoryManager.giveItem(event.getInstigator(), event.getInstigator(), outputItem,
+                    WorkstationInventoryUtils.getAssignedOutputSlots(event.getWorkstation(),
+                            InventoryOutputProcessPartCommonSystem.WORKSTATIONOUTPUTCATEGORY))) {
                 outputItem.destroy();
             }
         }
@@ -100,7 +90,8 @@ public class SiftedMaterialOutputProcessPartCommonSystem extends BaseComponentSy
     public void isValidInventoryItem(ProcessEntityIsInvalidForInventoryItemEvent event, EntityRef processEntity,
                                      SiftedMaterialOutputComponent siftedMaterialOutputComponent) {
         // only allow the workstation to put items in the output
-        if (WorkstationInventoryUtils.getAssignedOutputSlots(event.getWorkstation(), InventoryOutputProcessPartCommonSystem.WORKSTATIONOUTPUTCATEGORY).contains(event.getSlotNo())
+        if (WorkstationInventoryUtils.getAssignedOutputSlots(event.getWorkstation(),
+                InventoryOutputProcessPartCommonSystem.WORKSTATIONOUTPUTCATEGORY).contains(event.getSlotNo())
                 && !event.getInstigator().equals(event.getWorkstation())) {
             event.consume();
         }
@@ -124,11 +115,13 @@ public class SiftedMaterialOutputProcessPartCommonSystem extends BaseComponentSy
     }
 
 
-    private Set<EntityRef> createOutputItems(SiftedMaterialOutputComponent siftedMaterialOutputComponent, EntityRef processEntity) {
+    private Set<EntityRef> createOutputItems(SiftedMaterialOutputComponent siftedMaterialOutputComponent,
+                                             EntityRef processEntity) {
         Set<EntityRef> result = Sets.newHashSet();
 
         // grab the material composition from the process entity
-        MaterialCompositionComponent materialComposition = processEntity.getComponent(MaterialCompositionComponent.class);
+        MaterialCompositionComponent materialComposition =
+                processEntity.getComponent(MaterialCompositionComponent.class);
         if (materialComposition == null) {
             materialComposition = new MaterialCompositionComponent();
         }
