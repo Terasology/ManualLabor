@@ -8,7 +8,7 @@ import org.terasology.engine.entitySystem.systems.BaseComponentSystem;
 import org.terasology.engine.entitySystem.systems.RegisterSystem;
 import org.terasology.engine.registry.In;
 import org.terasology.engine.utilities.Assets;
-import org.terasology.entityNetwork.systems.EntityNetworkManager;
+import org.terasology.machines.entityNetwork.systems.EntityNetworkManager;
 import org.terasology.machines.ui.OverlapLayout;
 import org.terasology.manualLabor.components.HeatedComponent;
 import org.terasology.manualLabor.systems.HeatAuthoritySystem;
