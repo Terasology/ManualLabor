@@ -1,10 +1,15 @@
 {
   "parent": "engine:iconItem",
   "Item": {
-    "icon": "ManualLabor:ManualLabor#CrudeShears"
+    "icon": "ManualLabor:ManualLabor#CrudeShears",
+    "damageType": "shovelDamage"
   },
   "DisplayName": {
     "name": "Crude Shears"
+  },
+  "Durability": {
+        "durability": 32,
+        "maxDurability": 32
   },
   "ItemHelp": {
     "paragraphText": [
