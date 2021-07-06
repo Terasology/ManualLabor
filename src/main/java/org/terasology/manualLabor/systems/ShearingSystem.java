@@ -54,8 +54,7 @@ public class ShearingSystem extends BaseComponentSystem {
     private DelayManager delayManager;
 
     /**
-     * Executes changes occurring in event of shearing that is changing the sheared state if the entity is attacked by an appropriate shearing item.
-     * Also sets a periodic action responsible for triggering hair regrowth.
+     * Checks pre-conditions for shearing (e.g. the right tool) and initiates the shearing cycle.
      *
      * @param entityRef Entity being sheared
      */
