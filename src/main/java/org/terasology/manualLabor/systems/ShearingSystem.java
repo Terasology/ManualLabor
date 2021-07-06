@@ -27,7 +27,7 @@ import java.util.Optional;
 
 /**
  * This system is responsible for handling the logic for shearing. A sheep shearing cycle consists of a shearing switching to the model for
- * sheared state, dropping an item in event of shearing and switching back to the non sheared state after a certain amount of time.
+ * sheared state and switching back to the non sheared state after a certain amount of time.
  */
 @RegisterSystem
 public class ShearingSystem extends BaseComponentSystem {
@@ -53,12 +53,13 @@ public class ShearingSystem extends BaseComponentSystem {
     private DelayManager delayManager;
 
     /**
-     * Executes changes occurring in event of shearing.
+     * Executes changes occurring in event of shearing that is changing the sheared state if the entity is attacked by an appropriate shearing item.
+     * Also sets a periodic action responsible for triggering hair regrowth.
      *
      * @param entityRef Entity being sheared
      */
     @ReceiveEvent(components = {ShearableComponent.class})
-    public void onAttack(AttackEvent event, EntityRef entityRef) {
+    public void onShearing(AttackEvent event, EntityRef entityRef) {
         ShearableComponent component = entityRef.getComponent(ShearableComponent.class);
         EntityRef heldItem = event.getDirectCause();
         Prefab parentPrefab = heldItem.getParentPrefab();
