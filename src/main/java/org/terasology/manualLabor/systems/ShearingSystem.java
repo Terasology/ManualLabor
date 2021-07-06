@@ -26,8 +26,9 @@ import org.terasology.manualLabor.components.ShearableComponent;
 import java.util.Optional;
 
 /**
- * This system is responsible for handling the logic for shearing. A sheep shearing cycle consists of a shearing switching to the model for
- * sheared state and switching back to the non sheared state after a certain amount of time.
+ * This system is handling the logic for shearing. It currently is implemented mainly for sheep.
+ * The event of shearing starts a sheep shearing cycle that first switches the model to a
+ * sheared state and switches it back after 3 minutes to the non-sheared state.
  */
 @RegisterSystem
 public class ShearingSystem extends BaseComponentSystem {
