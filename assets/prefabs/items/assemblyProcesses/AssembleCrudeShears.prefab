@@ -4,11 +4,11 @@
     "processType": "ManualLabor:CrudeAssembling"
   },
   "RequirementInput": {
-    "requirements": ["CrudeMallet"]
+      "requirements": ["MetalFile"]
   },
   "InventoryInput": {
     "itemCounts": {
-      "ManualLabor:CrudeShovel": 1
+      "ManualLabor:Nugget": 3
     }
   },
   "InventoryOutput": {
