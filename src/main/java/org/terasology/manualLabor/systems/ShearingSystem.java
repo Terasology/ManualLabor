@@ -70,7 +70,7 @@ public class ShearingSystem extends BaseComponentSystem {
             delayManager.addPeriodicAction(entityRef, HAIR_REGROWTH_ACTION_ID, 0, HAIR_REGROWTH_TIME / 20);
             switchPrefab(entityRef, SHEARED_SHEEP_MESH, SHEARED_SHEEP_MATERIAL);
         }
-	event.consume();
+    event.consume();
     }
 
     /**
