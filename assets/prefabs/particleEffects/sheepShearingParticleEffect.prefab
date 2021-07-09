@@ -21,9 +21,9 @@
     },
     "velocityAffector": {},
     "particleEmitter": {
-        "lifeTime": 2,
-        "spawnRateMax": 250,
-        "spawnRateMin": 250,
+        "lifeTime": 1,
+        "spawnRateMax": 500,
+        "spawnRateMin": 500,
         "particleSpawnsLeft": 500,
         "maxParticles": 500,
         "particleCollision": false,
