@@ -7,4 +7,10 @@ import org.terasology.gestalt.entitysystem.component.Component;
 public class ShapedBlockInputComponent implements Component<ShapedBlockInputComponent> {
     public String shape;
     public int amount = 1;
+
+    @Override
+    public void copy(ShapedBlockInputComponent other) {
+        this.shape = other.shape;
+        this.amount = other.amount;
+    }
 }

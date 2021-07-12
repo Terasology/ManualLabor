@@ -6,4 +6,9 @@ import org.terasology.gestalt.entitysystem.component.Component;
 
 public class ToolItemOutputComponent implements Component<ToolItemOutputComponent> {
     public String item;
+
+    @Override
+    public void copy(ToolItemOutputComponent other) {
+        this.item = other.item;
+    }
 }

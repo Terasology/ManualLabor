@@ -7,7 +7,7 @@ import org.terasology.entityNetwork.components.BlockLocationNetworkNodeComponent
 import org.terasology.gestalt.entitysystem.component.Component;
 
 @ForceBlockActive
-public class HeatBlockNetworkComponent extends BlockLocationNetworkNodeComponent implements Component<HeatBlockNetworkComponent extends BlockLocationNetworkNodeComponent> {
+public class HeatBlockNetworkComponent extends BlockLocationNetworkNodeComponent implements Component<BlockLocationNetworkNodeComponent> {
     public static final String NETWORK_ID = "ManualLabor:Heat";
 
     public HeatBlockNetworkComponent() {

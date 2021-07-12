@@ -7,4 +7,10 @@ import org.terasology.gestalt.entitysystem.component.Component;
 public class ManualLaborSubstanceDescriptionComponent implements Component<ManualLaborSubstanceDescriptionComponent> {
     public String description = "";
     public String defaultItemTexture = "ManualLabor:Nugget";
+
+    @Override
+    public void copy(ManualLaborSubstanceDescriptionComponent other) {
+        this.description = other.description;
+        this.defaultItemTexture = other.defaultItemTexture;
+    }
 }

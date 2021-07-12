@@ -10,4 +10,9 @@ public class BonusToolDamageComponent implements Component<BonusToolDamageCompon
     public boolean hasValue() {
         return baseDamage > 0;
     }
+
+    @Override
+    public void copy(BonusToolDamageComponent other) {
+        this.baseDamage = other.baseDamage;
+    }
 }

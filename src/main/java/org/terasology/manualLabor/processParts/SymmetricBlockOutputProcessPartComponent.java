@@ -7,4 +7,9 @@ import org.terasology.gestalt.entitysystem.component.Component;
 
 public class SymmetricBlockOutputProcessPartComponent implements Component<SymmetricBlockOutputProcessPartComponent> {
     public BlockFamily blockFamily;
+
+    @Override
+    public void copy(SymmetricBlockOutputProcessPartComponent other) {
+        this.blockFamily = other.blockFamily;
+    }
 }

@@ -5,4 +5,8 @@ package org.terasology.manualLabor.processParts;
 import org.terasology.gestalt.entitysystem.component.Component;
 
 public class MetalSubstanceRequirementComponent implements Component<MetalSubstanceRequirementComponent> {
+    @Override
+    public void copy(MetalSubstanceRequirementComponent other) {
+
+    }
 }

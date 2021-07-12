@@ -7,4 +7,10 @@ import org.terasology.gestalt.entitysystem.component.Component;
 public class SymmetricBlockOutputComponent implements Component<SymmetricBlockOutputComponent> {
     public String shape;
     public int amount;
+
+    @Override
+    public void copy(SymmetricBlockOutputComponent other) {
+        this.shape = other.shape;
+        this.amount = other.amount;
+    }
 }

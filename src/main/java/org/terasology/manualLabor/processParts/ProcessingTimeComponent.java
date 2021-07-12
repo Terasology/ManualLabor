@@ -6,4 +6,9 @@ import org.terasology.gestalt.entitysystem.component.Component;
 
 public class ProcessingTimeComponent implements Component<ProcessingTimeComponent> {
     public long duration;
+
+    @Override
+    public void copy(ProcessingTimeComponent other) {
+        this.duration = other.duration;
+    }
 }

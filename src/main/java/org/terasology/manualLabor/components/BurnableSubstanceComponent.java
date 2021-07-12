@@ -6,4 +6,9 @@ import org.terasology.gestalt.entitysystem.component.Component;
 
 public class BurnableSubstanceComponent implements Component<BurnableSubstanceComponent> {
     public int burnTimePerSubstanceAmount;
+
+    @Override
+    public void copy(BurnableSubstanceComponent other) {
+        this.burnTimePerSubstanceAmount = other.burnTimePerSubstanceAmount;
+    }
 }

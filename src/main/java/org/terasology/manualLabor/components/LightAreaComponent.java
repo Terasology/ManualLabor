@@ -15,4 +15,10 @@ public class LightAreaComponent implements Component<LightAreaComponent> {
     @Owns
     public Set<EntityRef> lights = Sets.newHashSet();
     public String lightPrefab;
+
+    @Override
+    public void copy(LightAreaComponent other) {
+        this.lights = Sets.newHashSet(other.lights);
+        this.lightPrefab = other.lightPrefab;
+    }
 }

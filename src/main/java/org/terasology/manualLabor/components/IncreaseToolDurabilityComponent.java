@@ -15,4 +15,9 @@ public class IncreaseToolDurabilityComponent implements Component<IncreaseToolDu
         String upDown = increasePerSubstanceAmount < 0f ? "Decreases" : "Increases";
         return String.format(upDown + " tool durability by %.1f for every unit of material", Math.abs(increasePerSubstanceAmount));
     }
+
+    @Override
+    public void copy(IncreaseToolDurabilityComponent other) {
+        this.increasePerSubstanceAmount = other.increasePerSubstanceAmount;
+    }
 }

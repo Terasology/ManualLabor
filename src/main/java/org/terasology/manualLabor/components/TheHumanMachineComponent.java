@@ -11,4 +11,9 @@ public class TheHumanMachineComponent implements Component<TheHumanMachineCompon
     @Owns
     @Replicate
     public EntityRef machineEntity;
+
+    @Override
+    public void copy(TheHumanMachineComponent other) {
+        this.machineEntity = other.machineEntity;
+    }
 }

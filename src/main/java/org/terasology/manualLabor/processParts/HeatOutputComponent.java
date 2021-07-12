@@ -6,4 +6,9 @@ import org.terasology.gestalt.entitysystem.component.Component;
 
 public class HeatOutputComponent implements Component<HeatOutputComponent> {
     public long burnTime;
+
+    @Override
+    public void copy(HeatOutputComponent other) {
+        this.burnTime = other.burnTime;
+    }
 }

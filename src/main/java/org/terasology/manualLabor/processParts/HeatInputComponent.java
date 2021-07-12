@@ -5,4 +5,8 @@ package org.terasology.manualLabor.processParts;
 import org.terasology.gestalt.entitysystem.component.Component;
 
 public class HeatInputComponent implements Component<HeatInputComponent> {
+    @Override
+    public void copy(HeatInputComponent other) {
+
+    }
 }

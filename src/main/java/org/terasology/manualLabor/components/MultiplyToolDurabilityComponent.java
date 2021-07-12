@@ -16,4 +16,9 @@ public class MultiplyToolDurabilityComponent implements Component<MultiplyToolDu
 
         return String.format(upDown + " tool durability by %.1f%% for every 10 units of material", Math.abs((Math.pow(multiplyPerSubstanceAmount, 10) - 1f) * 100));
     }
+
+    @Override
+    public void copy(MultiplyToolDurabilityComponent other) {
+        this.multiplyPerSubstanceAmount = other.multiplyPerSubstanceAmount;
+    }
 }
