@@ -111,7 +111,8 @@ public class ShearingSystem extends BaseComponentSystem {
 
             entityRef.send(new PlaySoundEvent(random.nextItem(SHEARING_SOUNDS), 1));
         }
-    event.consume();
+        
+        event.consume();
     }
 
     /**
