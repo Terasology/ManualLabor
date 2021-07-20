@@ -21,6 +21,8 @@ import static org.mockito.Mockito.when;
 class ShearingSystemTest {
     ShearingSystem shearingSystem;
     private EntityRef entity;
+    SkeletalMesh initialMesh;
+    Material initialMaterial;
 
     /**
      * Initialize the shearing system and entity to be used while testing. The entity is supposed to mock the animal entity.
@@ -30,6 +32,10 @@ class ShearingSystemTest {
         shearingSystem = new ShearingSystem();
         entity = new PojoEntityManager().create();
         SkeletalMeshComponent skeletalMeshComponent = new SkeletalMeshComponent();
+        initialMesh = mock(SkeletalMesh.class);
+        skeletalMeshComponent.mesh = initialMesh;
+        initialMaterial = mock(Material.class);
+        skeletalMeshComponent.material = initialMaterial;
         entity.saveComponent(skeletalMeshComponent);
     }
 
@@ -42,8 +48,13 @@ class ShearingSystemTest {
         Material expectedMaterial = mock(Material.class);
         createMockAssetManager(expectedMesh, expectedMaterial);
 
-        shearingSystem.switchPrefab(entity, "testMesh", "testMaterial");
         SkeletalMeshComponent skeletalMeshComponent = entity.getComponent(SkeletalMeshComponent.class);
+
+        Assertions.assertNotEquals(skeletalMeshComponent.mesh,expectedMesh);
+        Assertions.assertNotEquals(skeletalMeshComponent.material,expectedMaterial);
+
+        shearingSystem.switchPrefab(entity, "testMesh", "testMaterial");
+        skeletalMeshComponent = entity.getComponent(SkeletalMeshComponent.class);
 
         Assertions.assertEquals(skeletalMeshComponent.mesh, expectedMesh);
         Assertions.assertEquals(skeletalMeshComponent.material, expectedMaterial);
@@ -62,8 +73,8 @@ class ShearingSystemTest {
         shearingSystem.switchPrefab(entity, "testMesh", "empty");
         SkeletalMeshComponent skeletalMeshComponent = entity.getComponent(SkeletalMeshComponent.class);
 
-        Assertions.assertEquals(skeletalMeshComponent.mesh, null);
-        Assertions.assertEquals(skeletalMeshComponent.material, null);
+        Assertions.assertEquals(skeletalMeshComponent.mesh, initialMesh);
+        Assertions.assertEquals(skeletalMeshComponent.material, initialMaterial);
     }
 
     /**
@@ -79,8 +90,8 @@ class ShearingSystemTest {
         shearingSystem.switchPrefab(entity, "empty", "testMaterial");
         SkeletalMeshComponent skeletalMeshComponent = entity.getComponent(SkeletalMeshComponent.class);
 
-        Assertions.assertEquals(skeletalMeshComponent.mesh, null);
-        Assertions.assertEquals(skeletalMeshComponent.material, null);
+        Assertions.assertEquals(skeletalMeshComponent.mesh, initialMesh);
+        Assertions.assertEquals(skeletalMeshComponent.material, initialMaterial);
     }
 
     private void createMockAssetManager(SkeletalMesh expectedMesh, Material expectedMaterial) {
