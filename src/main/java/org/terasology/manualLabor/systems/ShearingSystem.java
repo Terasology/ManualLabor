@@ -148,6 +148,8 @@ public class ShearingSystem extends BaseComponentSystem {
             if (skeletalMesh.isPresent() && shearedMaterial.isPresent()) {
                 skeletalMeshComponent.mesh = skeletalMesh.get();
                 skeletalMeshComponent.material = shearedMaterial.get();
+            } else {
+                logger.warn("Model switch fail due to invalid assets");
             }
             entity.saveComponent(skeletalMeshComponent);
         }
