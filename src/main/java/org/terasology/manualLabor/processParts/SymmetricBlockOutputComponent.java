@@ -9,7 +9,7 @@ public class SymmetricBlockOutputComponent implements Component<SymmetricBlockOu
     public int amount;
 
     @Override
-    public void copy(SymmetricBlockOutputComponent other) {
+    public void copyFrom(SymmetricBlockOutputComponent other) {
         this.shape = other.shape;
         this.amount = other.amount;
     }

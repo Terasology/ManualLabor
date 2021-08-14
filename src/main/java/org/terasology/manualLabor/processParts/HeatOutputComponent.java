@@ -8,7 +8,7 @@ public class HeatOutputComponent implements Component<HeatOutputComponent> {
     public long burnTime;
 
     @Override
-    public void copy(HeatOutputComponent other) {
+    public void copyFrom(HeatOutputComponent other) {
         this.burnTime = other.burnTime;
     }
 }

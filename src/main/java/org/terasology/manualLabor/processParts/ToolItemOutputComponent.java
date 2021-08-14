@@ -8,7 +8,7 @@ public class ToolItemOutputComponent implements Component<ToolItemOutputComponen
     public String item;
 
     @Override
-    public void copy(ToolItemOutputComponent other) {
+    public void copyFrom(ToolItemOutputComponent other) {
         this.item = other.item;
     }
 }

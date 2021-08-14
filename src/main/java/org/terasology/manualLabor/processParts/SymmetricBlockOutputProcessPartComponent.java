@@ -9,7 +9,7 @@ public class SymmetricBlockOutputProcessPartComponent implements Component<Symme
     public BlockFamily blockFamily;
 
     @Override
-    public void copy(SymmetricBlockOutputProcessPartComponent other) {
+    public void copyFrom(SymmetricBlockOutputProcessPartComponent other) {
         this.blockFamily = other.blockFamily;
     }
 }

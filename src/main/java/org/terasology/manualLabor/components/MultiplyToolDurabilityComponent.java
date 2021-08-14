@@ -18,7 +18,7 @@ public class MultiplyToolDurabilityComponent implements Component<MultiplyToolDu
     }
 
     @Override
-    public void copy(MultiplyToolDurabilityComponent other) {
+    public void copyFrom(MultiplyToolDurabilityComponent other) {
         this.multiplyPerSubstanceAmount = other.multiplyPerSubstanceAmount;
     }
 }

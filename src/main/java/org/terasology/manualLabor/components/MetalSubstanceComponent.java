@@ -6,7 +6,7 @@ import org.terasology.gestalt.entitysystem.component.Component;
 
 public class MetalSubstanceComponent implements Component<MetalSubstanceComponent> {
     @Override
-    public void copy(MetalSubstanceComponent other) {
+    public void copyFrom(MetalSubstanceComponent other) {
 
     }
 }

@@ -9,7 +9,7 @@ public class ShapedBlockInputComponent implements Component<ShapedBlockInputComp
     public int amount = 1;
 
     @Override
-    public void copy(ShapedBlockInputComponent other) {
+    public void copyFrom(ShapedBlockInputComponent other) {
         this.shape = other.shape;
         this.amount = other.amount;
     }

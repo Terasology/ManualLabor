@@ -6,7 +6,7 @@ import org.terasology.gestalt.entitysystem.component.Component;
 
 public class HeatSourceComponent implements Component<HeatSourceComponent> {
     @Override
-    public void copy(HeatSourceComponent other) {
+    public void copyFrom(HeatSourceComponent other) {
 
     }
 }

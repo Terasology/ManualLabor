@@ -17,7 +17,7 @@ public class IncreaseToolDamageComponent implements Component<IncreaseToolDamage
     }
 
     @Override
-    public void copy(IncreaseToolDamageComponent other) {
+    public void copyFrom(IncreaseToolDamageComponent other) {
         this.increasePerSubstanceAmount = other.increasePerSubstanceAmount;
     }
 }

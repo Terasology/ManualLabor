@@ -17,7 +17,7 @@ public class LightAreaComponent implements Component<LightAreaComponent> {
     public String lightPrefab;
 
     @Override
-    public void copy(LightAreaComponent other) {
+    public void copyFrom(LightAreaComponent other) {
         this.lights = Sets.newHashSet(other.lights);
         this.lightPrefab = other.lightPrefab;
     }

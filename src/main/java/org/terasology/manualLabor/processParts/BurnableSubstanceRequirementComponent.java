@@ -6,7 +6,7 @@ import org.terasology.gestalt.entitysystem.component.Component;
 
 public class BurnableSubstanceRequirementComponent implements Component<BurnableSubstanceRequirementComponent> {
     @Override
-    public void copy(BurnableSubstanceRequirementComponent other) {
+    public void copyFrom(BurnableSubstanceRequirementComponent other) {
 
     }
 }

@@ -14,7 +14,7 @@ public class SiftedMaterialOutputComponent implements Component<SiftedMaterialOu
     public float minimumSiftableAmount = 1f;
 
     @Override
-    public void copy(SiftedMaterialOutputComponent other) {
+    public void copyFrom(SiftedMaterialOutputComponent other) {
         this.item = other.item;
         this.smallItem = other.smallItem;
         this.smallItemAmount = other.smallItemAmount;

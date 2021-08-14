@@ -8,7 +8,7 @@ public class ProcessingTimeComponent implements Component<ProcessingTimeComponen
     public long duration;
 
     @Override
-    public void copy(ProcessingTimeComponent other) {
+    public void copyFrom(ProcessingTimeComponent other) {
         this.duration = other.duration;
     }
 }

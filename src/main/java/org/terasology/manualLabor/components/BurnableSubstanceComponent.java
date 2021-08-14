@@ -8,7 +8,7 @@ public class BurnableSubstanceComponent implements Component<BurnableSubstanceCo
     public int burnTimePerSubstanceAmount;
 
     @Override
-    public void copy(BurnableSubstanceComponent other) {
+    public void copyFrom(BurnableSubstanceComponent other) {
         this.burnTimePerSubstanceAmount = other.burnTimePerSubstanceAmount;
     }
 }

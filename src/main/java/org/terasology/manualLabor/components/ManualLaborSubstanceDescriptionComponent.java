@@ -9,7 +9,7 @@ public class ManualLaborSubstanceDescriptionComponent implements Component<Manua
     public String defaultItemTexture = "ManualLabor:Nugget";
 
     @Override
-    public void copy(ManualLaborSubstanceDescriptionComponent other) {
+    public void copyFrom(ManualLaborSubstanceDescriptionComponent other) {
         this.description = other.description;
         this.defaultItemTexture = other.defaultItemTexture;
     }

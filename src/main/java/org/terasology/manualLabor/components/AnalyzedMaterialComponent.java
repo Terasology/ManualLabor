@@ -10,7 +10,7 @@ public class AnalyzedMaterialComponent implements Component<AnalyzedMaterialComp
     public boolean IsAnalyzed = true;
 
     @Override
-    public void copy(AnalyzedMaterialComponent other) {
+    public void copyFrom(AnalyzedMaterialComponent other) {
         this.IsAnalyzed = other.IsAnalyzed;
     }
 }

@@ -13,7 +13,7 @@ public class TheHumanMachineComponent implements Component<TheHumanMachineCompon
     public EntityRef machineEntity;
 
     @Override
-    public void copy(TheHumanMachineComponent other) {
+    public void copyFrom(TheHumanMachineComponent other) {
         this.machineEntity = other.machineEntity;
     }
 }

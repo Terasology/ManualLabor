@@ -12,7 +12,7 @@ public class BonusToolDamageComponent implements Component<BonusToolDamageCompon
     }
 
     @Override
-    public void copy(BonusToolDamageComponent other) {
+    public void copyFrom(BonusToolDamageComponent other) {
         this.baseDamage = other.baseDamage;
     }
 }
