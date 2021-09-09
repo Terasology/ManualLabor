@@ -14,6 +14,7 @@ import org.terasology.engine.entitySystem.entity.EntityBuilder;
 import org.terasology.engine.entitySystem.entity.EntityManager;
 import org.terasology.engine.entitySystem.entity.EntityRef;
 import org.terasology.engine.entitySystem.event.EventPriority;
+import org.terasology.engine.entitySystem.event.Priority;
 import org.terasology.engine.entitySystem.event.ReceiveEvent;
 import org.terasology.engine.entitySystem.prefab.Prefab;
 import org.terasology.engine.entitySystem.systems.BaseComponentSystem;
@@ -36,7 +37,6 @@ import org.terasology.manualLabor.components.ShearableComponent;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * This system is handling the logic for shearing. It currently is implemented mainly for sheep.
@@ -89,7 +89,8 @@ public class ShearingSystem extends BaseComponentSystem {
      *
      * @param entityRef Entity being sheared
      */
-    @ReceiveEvent(components = {ShearableComponent.class}, priority = EventPriority.PRIORITY_HIGH)
+    @Priority(EventPriority.PRIORITY_HIGH)
+    @ReceiveEvent(components = {ShearableComponent.class})
     public void onShearing(AttackEvent event, EntityRef entityRef) {
         ShearableComponent component = entityRef.getComponent(ShearableComponent.class);
         EntityRef heldItem = event.getDirectCause();

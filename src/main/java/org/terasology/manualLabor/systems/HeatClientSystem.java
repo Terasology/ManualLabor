@@ -8,10 +8,10 @@ import org.terasology.engine.entitySystem.systems.BaseComponentSystem;
 import org.terasology.engine.entitySystem.systems.RegisterMode;
 import org.terasology.engine.entitySystem.systems.RegisterSystem;
 import org.terasology.engine.registry.In;
-import org.terasology.module.inventory.ui.GetItemTooltip;
 import org.terasology.entityNetwork.systems.EntityNetworkManager;
 import org.terasology.manualLabor.components.HeatBlockNetworkComponent;
 import org.terasology.manualLabor.components.HeatSourceComponent;
+import org.terasology.module.inventory.ui.GetItemTooltip;
 import org.terasology.nui.widgets.TooltipLine;
 
 @RegisterSystem(RegisterMode.CLIENT)
