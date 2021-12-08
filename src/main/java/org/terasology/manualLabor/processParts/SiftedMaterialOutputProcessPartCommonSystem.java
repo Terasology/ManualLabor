@@ -78,7 +78,8 @@ public class SiftedMaterialOutputProcessPartCommonSystem extends BaseComponentSy
     public void validateToExecute(ProcessEntityIsInvalidToStartEvent event, EntityRef processEntity,
                                   SiftedMaterialOutputComponent siftedMaterialOutputComponent) {
         Set<EntityRef> outputItems = createOutputItems(siftedMaterialOutputComponent, processEntity);
-        if (!InventoryProcessPartUtils.canGiveItemsTo(event.getWorkstation(), outputItems, InventoryOutputProcessPartCommonSystem.WORKSTATIONOUTPUTCATEGORY)) {
+        if (!InventoryProcessPartUtils.canGiveItemsTo(event.getWorkstation(), outputItems,
+                InventoryOutputProcessPartCommonSystem.WORKSTATIONOUTPUTCATEGORY)) {
             event.consume();
         }
     }
@@ -90,7 +91,9 @@ public class SiftedMaterialOutputProcessPartCommonSystem extends BaseComponentSy
         // allow other systems to post process these items
         processEntity.addComponent(new InventoryOutputItemsComponent(outputItems));
         for (EntityRef outputItem : outputItems) {
-            if (!inventoryManager.giveItem(event.getInstigator(), event.getInstigator(), outputItem, WorkstationInventoryUtils.getAssignedOutputSlots(event.getWorkstation(), InventoryOutputProcessPartCommonSystem.WORKSTATIONOUTPUTCATEGORY))) {
+            if (!inventoryManager.giveItem(event.getInstigator(), event.getInstigator(), outputItem,
+                    WorkstationInventoryUtils.getAssignedOutputSlots(event.getWorkstation(),
+                            InventoryOutputProcessPartCommonSystem.WORKSTATIONOUTPUTCATEGORY))) {
                 outputItem.destroy();
             }
         }
@@ -100,7 +103,8 @@ public class SiftedMaterialOutputProcessPartCommonSystem extends BaseComponentSy
     public void isValidInventoryItem(ProcessEntityIsInvalidForInventoryItemEvent event, EntityRef processEntity,
                                      SiftedMaterialOutputComponent siftedMaterialOutputComponent) {
         // only allow the workstation to put items in the output
-        if (WorkstationInventoryUtils.getAssignedOutputSlots(event.getWorkstation(), InventoryOutputProcessPartCommonSystem.WORKSTATIONOUTPUTCATEGORY).contains(event.getSlotNo())
+        if (WorkstationInventoryUtils.getAssignedOutputSlots(event.getWorkstation(),
+                InventoryOutputProcessPartCommonSystem.WORKSTATIONOUTPUTCATEGORY).contains(event.getSlotNo())
                 && !event.getInstigator().equals(event.getWorkstation())) {
             event.consume();
         }

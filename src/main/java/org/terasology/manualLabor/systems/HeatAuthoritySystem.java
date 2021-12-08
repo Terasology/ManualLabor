@@ -103,6 +103,6 @@ public class HeatAuthoritySystem extends BaseComponentSystem {
             }
         }
 
-        return (float)heatSources;
+        return (float) heatSources;
     }
 }

@@ -40,7 +40,8 @@ public class CampFireAuthoritySystem extends BaseComponentSystem {
     EntityManager entityManager;
 
     @ReceiveEvent
-    public void addLightArea(OnAddedComponent event, EntityRef entity, LightAreaComponent lightAreaComponent, LocationComponent location, BlockComponent block) {
+    public void addLightArea(OnAddedComponent event, EntityRef entity, LightAreaComponent lightAreaComponent,
+                             LocationComponent location, BlockComponent block) {
         Set<Vector3f> lightRelativePositions = Sets.newHashSet();
         lightRelativePositions.add(new Vector3f(0, 0, 0));
 
@@ -60,7 +61,8 @@ public class CampFireAuthoritySystem extends BaseComponentSystem {
     }
 
     @ReceiveEvent
-    public void destroyLightArea(BeforeDestroyEvent event, EntityRef entityRef, LightAreaComponent lightAreaComponent, BlockComponent block) {
+    public void destroyLightArea(BeforeDestroyEvent event, EntityRef entityRef,
+                                 LightAreaComponent lightAreaComponent, BlockComponent block) {
         for (EntityRef light : lightAreaComponent.lights) {
             light.destroy();
         }

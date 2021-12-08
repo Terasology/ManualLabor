@@ -39,7 +39,8 @@ public class MetalSubstanceRequirementProcessPartCommonSystem extends BaseCompon
     public void isValidInventoryItem(ProcessEntityIsInvalidForInventoryItemEvent event, EntityRef processEntity,
                                      MetalSubstanceRequirementComponent metalSubstanceRequirementComponent,
                                      InventoryInputComponent inventoryInputComponent) {
-        if (WorkstationInventoryUtils.getAssignedInputSlots(event.getWorkstation(), InventoryInputProcessPartCommonSystem.WORKSTATIONINPUTCATEGORY).contains(event.getSlotNo())) {
+        if (WorkstationInventoryUtils.getAssignedInputSlots(event.getWorkstation(),
+                InventoryInputProcessPartCommonSystem.WORKSTATIONINPUTCATEGORY).contains(event.getSlotNo())) {
             MaterialItemComponent materialItemComponent = event.getItem().getComponent(MaterialItemComponent.class);
             MaterialCompositionComponent materialCompositionComponent = event.getItem().getComponent(MaterialCompositionComponent.class);
             if (materialItemComponent != null && materialCompositionComponent != null) {

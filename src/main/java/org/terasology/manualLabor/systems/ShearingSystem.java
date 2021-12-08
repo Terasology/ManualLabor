@@ -59,16 +59,17 @@ public class ShearingSystem extends BaseComponentSystem {
     public static final String PARTICLE_EFFECT = "ManualLabor:sheepShearingParticleEffect";
 
     private static final Logger logger = LoggerFactory.getLogger(ShearingSystem.class);
-    private Random random = new FastRandom();
 
     @In
     protected Time time;
 
     @In
-    private EntityManager entityManager;
+    AssetManager assetManager;
+
+    private Random random = new FastRandom();
 
     @In
-    AssetManager assetManager;
+    private EntityManager entityManager;
 
     @In
     private DelayManager delayManager;
@@ -90,7 +91,7 @@ public class ShearingSystem extends BaseComponentSystem {
      * @param entityRef Entity being sheared
      */
     @Priority(EventPriority.PRIORITY_HIGH)
-    @ReceiveEvent(components = {ShearableComponent.class})
+    @ReceiveEvent(components = ShearableComponent.class)
     public void onShearing(AttackEvent event, EntityRef entityRef) {
         ShearableComponent component = entityRef.getComponent(ShearableComponent.class);
         EntityRef heldItem = event.getDirectCause();

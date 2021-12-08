@@ -31,7 +31,7 @@ public class TheHumanMachineAuthoritySystem extends BaseComponentSystem {
     @In
     EntityManager entityManager;
 
-    @ReceiveEvent(components = {CharacterComponent.class})
+    @ReceiveEvent(components = CharacterComponent.class)
     public void onPlayerSpawn(OnPlayerSpawnedEvent event, EntityRef player) {
         addTheHumanMachine(player);
     }

@@ -43,7 +43,8 @@ public class BurnableSubstanceRequirementProcessPartCommonSystem extends BaseCom
     public void isValidInventoryItem(ProcessEntityIsInvalidForInventoryItemEvent event, EntityRef processEntity,
                                      BurnableSubstanceRequirementComponent burnableSubstanceRequirementComponent,
                                      InventoryInputComponent inventoryInputComponent) {
-        if (WorkstationInventoryUtils.getAssignedInputSlots(event.getWorkstation(), InventoryInputProcessPartCommonSystem.WORKSTATIONINPUTCATEGORY).contains(event.getSlotNo())) {
+        if (WorkstationInventoryUtils.getAssignedInputSlots(event.getWorkstation(),
+                InventoryInputProcessPartCommonSystem.WORKSTATIONINPUTCATEGORY).contains(event.getSlotNo())) {
             if (getBurnTime(event.getItem()) == 0) {
                 event.consume();
             }

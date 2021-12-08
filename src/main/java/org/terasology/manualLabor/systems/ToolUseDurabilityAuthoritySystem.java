@@ -28,7 +28,8 @@ import org.terasology.workstation.process.inventory.InventoryInputProcessPartSlo
 public class ToolUseDurabilityAuthoritySystem extends BaseComponentSystem {
     @ReceiveEvent
     public void onToolUse(RequirementUsedEvent event, EntityRef entity) {
-        InventoryInputProcessPartSlotAmountsComponent slotAmounts = event.getProcessEntity().getComponent(InventoryInputProcessPartSlotAmountsComponent.class);
+        InventoryInputProcessPartSlotAmountsComponent slotAmounts = event.getProcessEntity()
+                .getComponent(InventoryInputProcessPartSlotAmountsComponent.class);
         if (slotAmounts != null) {
             int totalAmount = 0;
             for (Integer itemAmount : slotAmounts.slotAmounts.values()) {
