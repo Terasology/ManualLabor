@@ -2,11 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 package org.terasology.manualLabor.processParts;
 
-import org.terasology.gestalt.entitysystem.component.Component;
+import org.terasology.gestalt.entitysystem.component.EmptyComponent;
 
-public class BurnableSubstanceRequirementComponent implements Component<BurnableSubstanceRequirementComponent> {
-    @Override
-    public void copyFrom(BurnableSubstanceRequirementComponent other) {
-
-    }
+public class BurnableSubstanceRequirementComponent extends EmptyComponent<BurnableSubstanceRequirementComponent> {
 }

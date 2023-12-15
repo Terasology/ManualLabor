@@ -2,11 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 package org.terasology.manualLabor.processParts;
 
-import org.terasology.gestalt.entitysystem.component.Component;
+import org.terasology.gestalt.entitysystem.component.EmptyComponent;
 
-public class MetalSubstanceRequirementComponent implements Component<MetalSubstanceRequirementComponent> {
-    @Override
-    public void copyFrom(MetalSubstanceRequirementComponent other) {
-
-    }
+public class MetalSubstanceRequirementComponent extends EmptyComponent<MetalSubstanceRequirementComponent> {
 }
