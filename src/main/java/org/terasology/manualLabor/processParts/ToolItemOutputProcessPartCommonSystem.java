@@ -65,7 +65,7 @@ public class ToolItemOutputProcessPartCommonSystem extends BaseComponentSystem {
 
         Set<EntityRef> items = null;
         try {
-            items = createOutputItems(processEntity, toolItemOutputComponent);
+            items = createOutputItems(processEntity, toolItemOutputComponent, false);
             if (items.size() == 0) {
                 event.addError("No output items specified in " + this.getClass().getSimpleName());
             }
@@ -83,7 +83,7 @@ public class ToolItemOutputProcessPartCommonSystem extends BaseComponentSystem {
     @ReceiveEvent
     public void validateToStartExecution(ProcessEntityIsInvalidToStartEvent event, EntityRef processEntity,
                                          ToolItemOutputComponent toolItemOutputComponent) {
-        Set<EntityRef> outputItems = createOutputItems(processEntity, toolItemOutputComponent);
+        Set<EntityRef> outputItems = createOutputItems(processEntity, toolItemOutputComponent, false);
         if (!InventoryProcessPartUtils.canGiveItemsTo(event.getWorkstation(), outputItems,
                 InventoryOutputProcessPartCommonSystem.WORKSTATIONOUTPUTCATEGORY)) {
             event.consume();
@@ -93,7 +93,9 @@ public class ToolItemOutputProcessPartCommonSystem extends BaseComponentSystem {
     @ReceiveEvent
     public void finish(ProcessEntityFinishExecutionEvent event, EntityRef processEntity,
                        ToolItemOutputComponent toolItemOutputComponent) {
-        Set<EntityRef> outputItems = createOutputItems(processEntity, toolItemOutputComponent);
+        // true: this output item is actually handed to inventory below, unlike the other call
+        // sites here which only preview/validate and destroy their items immediately.
+        Set<EntityRef> outputItems = createOutputItems(processEntity, toolItemOutputComponent, true);
         // allow other systems to post process these items
         processEntity.addComponent(new InventoryOutputItemsComponent(outputItems));
         for (EntityRef outputItem : outputItems) {
@@ -119,7 +121,7 @@ public class ToolItemOutputProcessPartCommonSystem extends BaseComponentSystem {
     @ReceiveEvent
     public void getOutputDescriptions(ProcessEntityGetOutputDescriptionEvent event, EntityRef processEntity,
                                       ToolItemOutputComponent toolItemOutputComponent) {
-        Set<EntityRef> items = createOutputItems(processEntity, toolItemOutputComponent);
+        Set<EntityRef> items = createOutputItems(processEntity, toolItemOutputComponent, false);
         try {
             for (EntityRef item : items) {
                 event.addOutputDescription(InventoryProcessPartUtils.createProcessPartDescription(item));
@@ -131,11 +133,12 @@ public class ToolItemOutputProcessPartCommonSystem extends BaseComponentSystem {
         }
     }
 
-    private Set<EntityRef> createOutputItems(EntityRef processEntity, ToolItemOutputComponent toolItemOutputComponent) {
+    private Set<EntityRef> createOutputItems(EntityRef processEntity, ToolItemOutputComponent toolItemOutputComponent,
+                                             boolean createPersistentEntities) {
 
         Set<EntityRef> result = new HashSet<>();
         EntityBuilder entityBuilder = entityManager.newBuilder(toolItemOutputComponent.item);
-        entityBuilder.setPersistent(processEntity.isPersistent());
+        entityBuilder.setPersistent(createPersistentEntities);
 
         // add the composition of this tool
         MaterialCompositionComponent materialCompositionComponent = processEntity.getComponent(MaterialCompositionComponent.class);
