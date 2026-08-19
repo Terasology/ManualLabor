@@ -79,16 +79,25 @@ public class SymmetricBlockOutputProcessPartCommonSystem extends BaseComponentSy
                                          SymmetricBlockOutputComponent symmetricBlockOutputComponent) {
         SymmetricBlockOutputProcessPartComponent symmetricBlockOutputProcessPartComponent = null;
         InventoryInputProcessPartSlotAmountsComponent slotAmountsComponent = processEntity.getComponent(InventoryInputProcessPartSlotAmountsComponent.class);
-        for (Map.Entry<Integer, Integer> slotAmount : slotAmountsComponent.slotAmounts.entrySet()) {
-            EntityRef itemInSlot = InventoryUtils.getItemAt(event.getWorkstation(), slotAmount.getKey());
-            BlockItemComponent blockItemComponent = itemInSlot.getComponent(BlockItemComponent.class);
-            if (blockItemComponent != null) {
-                BlockUri sourceBlockUri = blockItemComponent.blockFamily.getURI();
-                BlockUri newBlockUri = new BlockUri(new ResourceUrn(sourceBlockUri.getShapelessUri().toString()), new ResourceUrn(symmetricBlockOutputComponent.shape));
-                symmetricBlockOutputProcessPartComponent = new SymmetricBlockOutputProcessPartComponent();
-                symmetricBlockOutputProcessPartComponent.blockFamily = blockManager.getBlockFamily(newBlockUri);
-                processEntity.addComponent(symmetricBlockOutputProcessPartComponent);
-                break;
+        // This will be null if no InventoryInput-driven process part on this same entity found a
+        // matching item this validation pass - InventoryInputProcessPartCommonSystem only adds it once
+        // it has one - or if the event was already consumed before that handler ran. Every sibling
+        // reader of this component (SymmetricBlockInputProcessPartCommonSystem,
+        // ShapedBlockInputProcessPartCommonSystem, and InventoryInputProcessPartCommonSystem's own
+        // execute()) already guards it for exactly this reason; this one did not, and crashed with an
+        // NPE the moment a shaping table's input didn't resolve - see #5143.
+        if (slotAmountsComponent != null) {
+            for (Map.Entry<Integer, Integer> slotAmount : slotAmountsComponent.slotAmounts.entrySet()) {
+                EntityRef itemInSlot = InventoryUtils.getItemAt(event.getWorkstation(), slotAmount.getKey());
+                BlockItemComponent blockItemComponent = itemInSlot.getComponent(BlockItemComponent.class);
+                if (blockItemComponent != null) {
+                    BlockUri sourceBlockUri = blockItemComponent.blockFamily.getURI();
+                    BlockUri newBlockUri = new BlockUri(new ResourceUrn(sourceBlockUri.getShapelessUri().toString()), new ResourceUrn(symmetricBlockOutputComponent.shape));
+                    symmetricBlockOutputProcessPartComponent = new SymmetricBlockOutputProcessPartComponent();
+                    symmetricBlockOutputProcessPartComponent.blockFamily = blockManager.getBlockFamily(newBlockUri);
+                    processEntity.addComponent(symmetricBlockOutputProcessPartComponent);
+                    break;
+                }
             }
         }
 
